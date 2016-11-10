@@ -15,12 +15,13 @@ var productNameJSON = ""
 var walmartSKUInfo = ""
 var targetSKUInfo = ""
 var storeStreet = ""
+var availableStoreForProduct:[JSON] = []
 
-struct StoreInfo {
-    let storeAddress : String
-}
+//struct StoreInfo {
+//    let storeAddress : String
+//}
 
-var storeInformation = [StoreInfo]()
+//var storeInformation = [StoreInfo]()
 
 class APICall {
     
@@ -41,14 +42,13 @@ class APICall {
                 targetSKUInfo = "Target: \(json["store_matches"][0]["sku"])"
                 walmartSKUInfo = "Walmart: \(json["store_matches"][1]["sku"])"
                 
-                let storeArray = json["stores"].arrayValue
-                for x in storeArray {
-                    let storeAddressInfo = x["store_address"].stringValue
-                    let theStores = StoreInfo(storeAddress: storeAddressInfo)
-                    storeInformation.append(theStores)
-                    print(storeInformation)
-                    
-            }
+                availableStoreForProduct = json["stores"].arrayValue
+//                for x in storeArray {
+//                    let storeAddressInfo = x["store_address"].stringValue
+//                    let theStores = StoreInfo(storeAddress: storeAddressInfo)
+//                    storeInformation.append(theStores)
+//                    print(storeInformation)
+//                }
         }
     }
 }
